@@ -1,0 +1,110 @@
+import java.util.Scanner; 
+public class Main { 
+public int[] Now = {1, 1, 1, 1}; //正前方 
+public int[] Back = {2, 2, 2, 2};
+public int[] Left = {3, 3, 3, 3};
+public int[] Right = {4, 4, 4, 4};
+public int[] Up = {5, 5, 5, 5};
+public int[] Down = {6, 6, 6, 6};
+public void reverseX() { 
+int[] value = new int[8];
+value[0] = Up[2]; 
+ value[1] = Up[3]; 
+ value[2] = Right[0]; 
+value[3] = Right[2]; 
+ value[4] = Down[2]; 
+value[5] = Down[3]; 
+value[6] = Left[3];
+  value[7] = Left[0]; 
+Up[2] = value[6]; 
+Up[3] = value[7]; 
+Right[0] = value[0]; 
+Right[2] = value[1]; 
+Down[2] = value[2];
+Down[3] = value[3];
+ Left[3] = value[4]; 
+Left[0] = value[5]; 
+value[0] = Now[0]; 
+value[1] = Now[1]; 
+ value[2] = Now[2]; 
+value[3] = Now[3]; 
+Now[0] = value[3]; 
+Now[1] = value[0]; 
+ Now[2] = value[1]; 
+Now[3] = value[2]; 
+} 
+ public void reverseY() { 
+ int[] value = new int[8];
+  value[0] = Up[3]; 
+value[1] = Up[1]; 
+value[2] = Back[1]; 
+value[3] = Back[2]; 
+value[4] = Down[1]; 
+ value[5] = Down[2];
+  value[6] = Now[2]; 
+value[7] = Now[1]; 
+Up[3] = value[6]; 
+Up[1] = value[7]; 
+ Back[1] = value[0]; 
+Back[2] = value[1]; 
+Down[1] = value[2]; 
+ Down[2] = value[3]; 
+ Now[2] = value[4]; 
+ Now[1] = value[5]; 
+value[0] = Right[0]; 
+value[1] = Right[1]; 
+ value[2] = Right[2]; 
+ value[3] = Right[3]; 
+ Right[0] = value[2]; 
+ Right[1] = value[0]; 
+ Right[2] = value[3]; 
+ Right[3] = value[1]；
+ } 
+ public void reverseZ() { 
+ int[] value = new int[8]; 
+ value[0] = Now[1]; 
+value[1] = Now[0];
+ value[2] = Left[0]; 
+ value[3] = Left[1]; 
+value[4] = Back[0]; 
+ value[5] = Back[1]; 
+ value[6] = Right[1]; 
+value[7] = Right[0]; 
+ Now[1] = value[6]; 
+ Now[0] = value[7]; 
+Left[0] = value[0]; 
+Left[1] = value[1]; 
+ Back[0] = value[2]; 
+ Back[1] = value[3]; 
+ Right[1] = value[4]; 
+ Right[0] = value[5]; 
+value[0] = Up[0]; 
+value[1] = Up[1]; 
+ value[2] = Up[2]; 
+value[3] = Up[3]; 
+ Up[0] = value[2]; 
+ Up[1] = value[0]; 
+Up[2] = value[3]; 
+Up[3] = value[1]; 
+ } 
+public void getResult(String A) { 
+String[] color = {"", "绿", "蓝", "橙", "红", "白", "黄"}; 
+ for(int i = 0;i < A.length();i++) { 
+char j = A.charAt(i); 
+if(j == 'x') 100 reverseX(); 
+else if(j == 'y') 
+reverseY(); 
+ else if(j == 'z')
+  reverseZ(); 
+} 
+ int[] result = new int[3];
+ result[0] = Now[1];
+  result[1] = Right[0];
+ result[2] = Up[3]; 
+for(int i = 0;i < 3;i++)  System.out.print(color[result[i]]); 
+} 
+public static void main(String[] args) { 
+ Main test = new Main(); Scanner in = new Scanner(System.in); 
+ String A = in.next(); test.getResult(A); 
+ } 
+ }
